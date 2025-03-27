@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard | Hospital Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #35424a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 5px 5px 0 0;
+        }
+        h2 {
+            color: #35424a;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        ul li a {
+            color: #e8491d;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        ul li a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background-color: #e8491d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #d13a0f;
+        }
+        .update-section {
+            margin-top: 30px;
+        }
+        .update-section h3 {
+            color: #35424a;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input[type="text"],
+        textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        textarea {
+            resize: none; /* Prevent resizing */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Hospital Management System</h1>
+        </div>
+        
+        <h2>Welcome, Dr. <%= doctorName %></h2>
+
+        <ul>
+            <li><a href="/appointments/upcoming">View Upcoming Appointments</a></li>
+            <li><a href="/appointments/past">View Past Appointments</a></li>
+            <li><a href="/appointments/today">View Today's Appointments</a></li>
+        </ul>
+
+        <button onclick="window.location.href='/update-appointments'">Update Appointments</button>
+
+        <div class="update-section">
+            <h3>Update Patient Records</h3>
+            
+            <form action="/update-patient" method="POST">
+                <label for="patientId">Patient ID:</label>
+                <input type="text" id="patientId" name="patientId" required>
+
+                <label for="status">Update History/Status:</label>
+                <textarea id="status" name="status" rows="4" required></textarea>
+
+                <button type="submit">Update</button>
+            </form>
+        </div>
+
+        <button onclick="window.location.href='/change-password'">Change Password</button>
+    </div>
+</body>
+</html>
+<!--                 <select id="status" name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <button type="submit">Update</button>
+            </form>
+            <a href="/doctor" class="back-button">Back to Dashboard</a>
+        </div>
+    </div>
+</body> 

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Appointments | Hospital Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .main-header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        .main-header h1 {
+            margin: 0;
+            text-align: center;
+            font-size: 2em;
+        }
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav li {
+            display: inline;
+            margin: 0 20px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .content {
+            background: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #35424a;
+        }
+        .appointment-form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-actions {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background: #e8491d;
+            color: #ffffff;
+        }
+        .btn-secondary {
+            background: #35424a;
+            color: #ffffff;
+        }
+        .error-message {
+            background: #ff9999;
+            color: #cc0000;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .main-footer {
+            background: #35424a;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/appointments">Appointments</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <h2>Update Appointment</h2>
+            <% if (locals.errorMessage) { %>
+                <div class="error-message"><%= errorMessage %></div>
+            <% } %>
+            <form action="/update-appointment" method="POST" class="appointment-form">
+                <div class="form-group">
+                    <label for="appointmentId">Appointment ID:</label>
+                    <input type="text" id="appointmentId" name="appointmentId" value="<%= appointment.id %>" readonly>
+                    <br>
+                    
+                    <button type="submit" class="btn btn-secondary">Find Appointment</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="patientName">Patient Name:</label>
+                    <input type="text" id="patientName" name="patientName" value="<%= appointment.patientName %>" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">New Date:</label>
+                    <input type="date" id="date" name="date" value="<%= appointment.date %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">New Time:</label>
+                    <input type="time" id="time" name="time" value="<%= appointment.time %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="scheduled" <%= appointment.status === 'scheduled' ? 'selected' : '' %>>Scheduled</option>
+                        <option value="completed" <%= appointment.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                        <option value="cancelled" <%= appointment.status === 'cancelled' ? 'selected' : '' %>>Cancelled</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Notes:</label>
+                    <textarea id="notes" name="notes" rows="4"><%= appointment.notes %></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Update Appointment</button>
+                    <a href="/appointments" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 Hospital Management System</p>
+        </footer>
+    </div>
+</body>
+</html>
