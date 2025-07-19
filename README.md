@@ -5,6 +5,15 @@ Building a Hospital Management System for our course project using **PostgreSQL*
 > 📁 Only the `backend` folder contains the files necessary to run the project. All other files outside this folder are not required.
 
 ---
+## 📄 User Manual
+
+For a detailed overview of the Hospital Management System, including:
+
+- Website screenshots  
+- Entity-relationship schema  
+- User navigation flow
+
+Please refer to the [**User Manual (Google Docs)**](https://docs.google.com/document/d/1WNg4aekFgYPw3fuTHlOBMOFmPDEIlQvv/edit?usp=sharing&ouid=100891223449281310525&rtpof=true&sd=true).
 
 ## 🚀 How to Run the Project
 
